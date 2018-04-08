@@ -1,0 +1,19 @@
+<h1>별 수정 페이지!!</h1>
+
+<div class="container" style="margin-top:50px;">
+  <form style="margin-top:40px;" action='/stars/the_real_update/<%= @the_selected_star.id %>' method="POST">
+    <div class="form-group">
+      <label>별 제목: </label>
+      <input type="text" name="title" class="form-control" value="<%= @the_selected_star.title %>">
+    </div>
+
+      <label>별 내용: </label>
+      <textarea class="form-control" rows="5" name="content"><%= @the_selected_star.content %></textarea>
+
+      <label>별 우선순위: </label>
+      <input type="number" name="priority" class="form-control" value="<%= @the_selected_star.priority %>">
+      <br />
+      <button type="submit" class="btn btn-default">수정완료!!^0^</button>
+    <br />
+  </form>
+</div>

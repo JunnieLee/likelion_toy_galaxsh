@@ -1,0 +1,37 @@
+<h1> 별빛이 내린다!! </h1>
+<hr />
+
+<% @stars.each do |s| %>
+	<div>
+		별 제목: <%= s.title %>	
+	<p>
+		별 내용: <%= s.content %>
+	</p>
+	우선순위: <%= s.priority %>
+	</div>
+
+	<button><a href='/stars/destroy/<%= s.id %>' data-method='DELETE'>이 별 삭제하기</a> </button>
+	<button><a href='/stars/update_view/<%= s.id %>'>이 별 내용 수정하기</a></button> 
+
+	<hr />
+
+      		<% s.goals.each do |r| %>
+        	<div> 
+        		- <%= r.title %> : <%= r.done %> 
+		  	</div> 
+		  		<br />
+      		<% end %>
+
+		    <!--새로운 댓글 입력하기--> 
+		    <form style="margin-top:40px;" action="/stars/<%= s.id %>/goals" method="POST">
+		        <input type="hidden" value="<%=s.id%>" name="star_id">
+		        <input type="text" class="form-control" rows="1" name="title" placeholder="goal title!">
+		        <input type = "checkbox" name="done">
+		        <br>
+		        <button type="submit" class="btn btn-default">goal 등록!</button>
+		    </form>
+
+<% end %>
+
+<br />
+<a href="/stars/new">새로운 별 만들기!</a>
